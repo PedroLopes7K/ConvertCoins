@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Convert Coins</title>
+  </head>
+  <body>
+    <nav class="menu">
+      <div class="container">
+        <!-- as li compartilham o id da ul -->
+        <ul id="option">
+          <li class="menuitem btc">BITCOIN</li>
+          <li class="menuitem euro">EURO</li>
+          <li class="menuitem dolar">DOLAR</li>
+          <li class="menuitem libra">LIBRA</li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- corpo -->
+    <div class="content">
+      <div class="box">
+        <h2 class="title"></h2>
+        <input
+          type="number"
+          inputmode="numeric"
+          autocomplete="off"
+          id="ValorReal"
+          placeholder="Valor Em Reais"
+        />
+        <button id="Btn" class="btn">Converter</button>
+        <div class="resultado"></div>
+      </div>
+      <button class="delete">LIMPAR</button>
+    </div>
+
+    <!-- construir footer -->
+    <script src="main.js"></script>
+  </body>
+</html>
