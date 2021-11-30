@@ -5,11 +5,41 @@ let resultado = document.querySelector('.resultado')
 let html = document.querySelector('h2.title')
 let options = document.querySelectorAll('.menuitem')
 
-// conversao do dia 17/11/2021 as 00:10
-const BTC = 325001.78
-const Dolar = 5.53
-const Libra = 7.46
-const Euro = 6.27
+let BTC = 0
+let Dolar = 0
+let Libra = 0
+let Euro = 0
+
+const url =
+  'https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL '
+
+function recupererPrice() {
+  let requeste = new XMLHttpRequest()
+  requeste.open('GET', url)
+
+  requeste.responseType = 'json'
+  requeste.send()
+
+  requeste.onload = function () {
+    if (requeste.readyState === XMLHttpRequest.DONE) {
+      if (requeste.status === 200) {
+        let response = requeste.response
+        let PriceInBTC = response.BTCBRL.ask
+        let PriceUSD = response.USDBRL.ask
+        let PriceEUR = response.EURBRL.ask
+        let PriceGBP = response.GBPBRL.ask
+        BTC = parseFloat(PriceInBTC)
+        Dolar = parseFloat(PriceUSD)
+        Euro = parseFloat(PriceEUR)
+        Libra = parseFloat(PriceGBP)
+      } else {
+        alert('Algo deu errado, por favor volte mais tarde')
+      }
+    }
+  }
+  console.log('Preço Atualizado')
+}
+setInterval(recupererPrice, 1000)
 
 // nao e possivel adicionar eventlistener em uma lista de variaveis
 for (const option of options) {
@@ -144,3 +174,4 @@ InputValue.addEventListener('keypress', function (evt) {
       break
   }
 })
+
